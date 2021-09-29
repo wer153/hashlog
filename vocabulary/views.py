@@ -19,4 +19,5 @@ class VocabularySerializer(serializers.ModelSerializer):
 class VocabularyViewSet(ModelViewSet):
     serializer_class = VocabularySerializer
     permission_classes = AllowAny,
+    queryset = Vocabulary.objects.all()
     lookup_field = 'title'
