@@ -12,7 +12,7 @@ class VocabularySerializer(serializers.ModelSerializer):
             'title',
             'subtitle',
             'modified_datetime',
-            'text',
+            'content',
         )
 
 
@@ -21,4 +21,3 @@ class VocabularyViewSet(ModelViewSet):
     permission_classes = AllowAny,
     queryset = Vocabulary.objects.all()
     lookup_field = 'title'
-g

@@ -6,7 +6,7 @@ class Vocabulary(models.Model):
     subtitle = models.CharField(max_length=100)
     created_datetime = models.DateTimeField(auto_now=True)
     modified_datetime = models.DateTimeField(auto_now=True)
-    text = models.TextField()
+    content = models.TextField()
 
     def __str__(self):
         return f'{self.title}: {self.subtitle}'
