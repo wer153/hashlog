@@ -21,3 +21,4 @@ class VocabularyViewSet(ModelViewSet):
     permission_classes = AllowAny,
     queryset = Vocabulary.objects.all()
     lookup_field = 'title'
+g
