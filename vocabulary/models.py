@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Vocabulary(models.Model):
-    title = models.CharField(max_length=100, db_index=True)
+    title = models.CharField(unique=True, max_length=100, db_index=True)
     subtitle = models.CharField(max_length=100, db_index=True)
     created_datetime = models.DateTimeField(auto_now=True)
     modified_datetime = models.DateTimeField(auto_now=True)
