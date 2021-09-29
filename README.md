@@ -25,3 +25,8 @@
 - 내가 최근에 정의/검색한 어휘들은 왼쪽 창에 남아있어요.
 
 <img width="1130" alt="ui" src="https://user-images.githubusercontent.com/23370765/135258556-e6b48a4e-1ece-4cab-af7b-10f0ac5b31c1.png">
+
+## 프론트
+
+프론트는 리엑트 싱글 페이지 어플리케이션으로 구성합니다.
+프론트 코드 저장소(https://github.com/wer153/hashlog_front)
