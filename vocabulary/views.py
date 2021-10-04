@@ -11,8 +11,6 @@ class VocabularySerializer(serializers.ModelSerializer):
         fields = (
             'title',
             'subtitle',
-            'modified_datetime',
-            'searched_datetime',
             'content',
         )
 
