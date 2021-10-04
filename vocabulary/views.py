@@ -12,6 +12,7 @@ class VocabularySerializer(serializers.ModelSerializer):
             'title',
             'subtitle',
             'content',
+            'starred',
         )
 
 
