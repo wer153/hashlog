@@ -12,6 +12,7 @@ class VocabularySerializer(serializers.ModelSerializer):
             'title',
             'subtitle',
             'modified_datetime',
+            'searched_datetime',
             'content',
         )
 
