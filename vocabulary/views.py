@@ -18,12 +18,9 @@ class VocabularySerializer(serializers.ModelSerializer):
         )
 
 
-class VocabularyViewSet(ModelViewSet):
-    serializer_class = VocabularySerializer
-    permission_classes = AllowAny,
-    lookup_field = 'title'
-    keywords = 'starred',
-    model = Vocabulary
+class QueryParamsMixin:
+    model = None
+    keywords = None
 
     def get_queryset(self):
         self.validate_model()
@@ -62,6 +59,14 @@ class VocabularyViewSet(ModelViewSet):
             except AttributeError:
                 raise NotImplementedError(f'validate_{field_name}를 구현해주세요.')
             validator(self.request.query_params[field_name])
+
+
+class VocabularyViewSet(QueryParamsMixin, ModelViewSet):
+    serializer_class = VocabularySerializer
+    permission_classes = AllowAny,
+    lookup_field = 'title'
+    keywords = 'starred',
+    model = Vocabulary
 
     def validate_starred(self, value):
         if bool(value) not in (True, False):
