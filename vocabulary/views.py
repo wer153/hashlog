@@ -26,23 +26,30 @@ class VocabularyViewSet(ModelViewSet):
     model = Vocabulary
 
     def get_queryset(self):
+        self.validate_model()
+        self.validate_keywords()
         self.validate_query_params()
         return self.model.objects.filter(
             **self.clean_query_params()
         )
 
+    def validate_model(self):
+        if self.model is None:
+            raise NotImplementedError('model은 None이될 수 없습니다.')
+
+    def validate_keywords(self):
+        if self.keywords is None:
+            raise NotImplementedError('keywords는 None이될 수 없습니다.')
+        for keyword in self.keywords:
+            if not hasattr(self.model(), keyword):
+                raise FieldDoesNotExist(f'{keyword}필드가 존재하지 않습니다.')
+
     def clean_query_params(self):
-        self.validate_keywords()
         return {
             key: value
             for key, value in self.request.query_params.items()
             if key in self.keywords
         }
-
-    def validate_keywords(self):
-        for keyword in self.keywords:
-            if not hasattr(self.model(), keyword):
-                raise FieldDoesNotExist(f'{keyword}필드가 존재하지 않습니다.')
 
     def validate_query_params(self):
         for field_name in self.keywords:
