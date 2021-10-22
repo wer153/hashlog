@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from vocabulary.models import Vocabulary
+
+admin.site.register(Vocabulary)
